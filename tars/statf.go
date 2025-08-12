@@ -163,6 +163,11 @@ func (s *StatFHelper) pushBackMsg(stStatInfo StatInfo, fromServer bool) {
 
 // ReportMicMsg report the StatInfo ,from server shows whether it comes from server.
 func (s *StatFHelper) ReportMicMsg(stStatInfo StatInfo, fromServer bool) {
+	//  if sf is nil, it means statf is not initialized, so we just return
+	if s.sf == nil {
+		TLOG.Warn("StatFHelper not initialized")
+		return
+	}
 	s.pushBackMsg(stStatInfo, fromServer)
 }
 
